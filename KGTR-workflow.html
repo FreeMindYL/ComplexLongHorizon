@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KGTR 任务规划流程图</title>
+    <title>KGTR Task Planning Workflow</title>
     <style>
         * {
             margin: 0;
@@ -348,49 +348,49 @@
 </head>
 <body>
     <div class="container">
-        <h1>🤖 KGTR 任务规划流程</h1>
+        <h1>🤖 KGTR Task Planning Workflow</h1>
         <p class="subtitle">KG-enhanced Planning RNN with Dual-Layer Memory Architecture</p>
         
-        <!-- 图例 -->
+        <!-- Legend -->
         <div class="legend">
             <div class="legend-item">
                 <div class="legend-icon legend-llm">🧠</div>
-                <span>LLM/VLM API调用</span>
+                <span>LLM/VLM API Call</span>
             </div>
             <div class="legend-item">
                 <div class="legend-icon legend-code">💻</div>
-                <span>程序化计算</span>
+                <span>Programmatic Computation</span>
             </div>
             <div class="legend-item">
                 <div class="legend-icon legend-neo4j">🔷</div>
-                <span>Neo4j图操作</span>
+                <span>Neo4j Graph Operations</span>
             </div>
             <div class="legend-item">
                 <div class="legend-icon legend-robot">🔧</div>
-                <span>机器人执行</span>
+                <span>Robot Execution</span>
             </div>
         </div>
 
-        <!-- Phase 2: 规划准备 -->
+        <!-- Phase 2: Planning Preparation -->
         <div class="phase phase-2">
             <div class="phase-header">
                 <div class="phase-number">2</div>
                 <div>
-                    <div class="phase-title">任务规划准备 (KGTR Pre-processing)</div>
-                    <div class="phase-subtitle">从用户指令到规划上下文构建</div>
+                    <div class="phase-title">Task Planning Preparation (KGTR Pre-processing)</div>
+                    <div class="phase-subtitle">From user instruction to planning context construction</div>
                 </div>
             </div>
             
             <div class="flow-container">
                 <div class="step-card llm">
                     <div class="step-icon">🧠</div>
-                    <div class="step-title">目标对象识别</div>
-                    <div class="step-desc">从自然语言指令中提取目标对象</div>
+                    <div class="step-title">Target Object Identification</div>
+                    <div class="step-desc">Extract target objects from natural language instruction</div>
                     <div class="step-eq">GPT-4</div>
                     <div class="tooltip">
-                        <strong>输入:</strong> "把红色杯子放到盒子里"<br>
-                        <strong>输出:</strong> ["红色杯子", "盒子"]<br>
-                        <strong>作用:</strong> 识别任务涉及的关键对象
+                        <strong>Input:</strong> "Put the red cup into the box"<br>
+                        <strong>Output:</strong> ["red_cup", "box"]<br>
+                        <strong>Purpose:</strong> Identify key objects involved in the task
                     </div>
                 </div>
                 
@@ -398,13 +398,13 @@
                 
                 <div class="step-card neo4j">
                     <div class="step-icon">🔷</div>
-                    <div class="step-title">子图提取</div>
-                    <div class="step-desc">从KG中提取任务相关子图</div>
+                    <div class="step-title">Subgraph Extraction</div>
+                    <div class="step-desc">Extract task-relevant subgraph from KG</div>
                     <div class="step-eq">Eq. 10</div>
                     <div class="tooltip">
-                        <strong>操作:</strong> Neo4j Cypher查询<br>
-                        <strong>公式:</strong> G_task = ExtractSubgraph(G, targets)<br>
-                        <strong>输出:</strong> 包含目标对象及其空间关系的子图
+                        <strong>Operation:</strong> Neo4j Cypher Query<br>
+                        <strong>Formula:</strong> G_task = ExtractSubgraph(G, targets)<br>
+                        <strong>Output:</strong> Subgraph containing target objects and their spatial relations
                     </div>
                 </div>
                 
@@ -412,14 +412,14 @@
                 
                 <div class="step-card neo4j">
                     <div class="step-icon">🔷</div>
-                    <div class="step-title">约束查询</div>
-                    <div class="step-desc">提取空间约束条件</div>
+                    <div class="step-title">Constraint Query</div>
+                    <div class="step-desc">Extract spatial constraints</div>
                     <div class="step-eq">Eq. 12-14</div>
                     <div class="tooltip">
-                        <strong>查询内容:</strong><br>
-                        • 遮挡约束 (blocking)<br>
-                        • 容器约束 (containment)<br>
-                        • 可达性约束 (accessibility)
+                        <strong>Query Content:</strong><br>
+                        • Blocking constraints<br>
+                        • Containment constraints<br>
+                        • Accessibility constraints
                     </div>
                 </div>
                 
@@ -427,12 +427,12 @@
                 
                 <div class="step-card code">
                     <div class="step-icon">💻</div>
-                    <div class="step-title">复杂度计算</div>
-                    <div class="step-desc">计算场景空间复杂度</div>
+                    <div class="step-title">Complexity Scoring</div>
+                    <div class="step-desc">Compute spatial complexity</div>
                     <div class="step-eq">Eq. 27-28</div>
                     <div class="tooltip">
-                        <strong>公式:</strong> SpatialComplexity = α|V| + β|E| + γ·Blocking + δ·Depth<br>
-                        <strong>作用:</strong> 评估任务难度
+                        <strong>Formula:</strong> SpatialComplexity = α|V| + β|E| + γ·Blocking + δ·Depth<br>
+                        <strong>Purpose:</strong> Evaluate task difficulty
                     </div>
                 </div>
                 
@@ -440,43 +440,43 @@
                 
                 <div class="step-card code">
                     <div class="step-icon">💻</div>
-                    <div class="step-title">规划深度决策</div>
-                    <div class="step-desc">确定规划迭代次数</div>
+                    <div class="step-title">Planning Depth Decision</div>
+                    <div class="step-desc">Determine planning iterations</div>
                     <div class="step-eq">Eq. 29</div>
                     <div class="tooltip">
-                        <strong>逻辑:</strong> 复杂度高→深度规划，复杂度低→浅层规划<br>
-                        <strong>输出:</strong> planning_depth = f(complexity)
+                        <strong>Logic:</strong> High complexity → Deep planning, Low complexity → Shallow planning<br>
+                        <strong>Output:</strong> planning_depth = f(complexity)
                     </div>
                 </div>
             </div>
             
-            <!-- 双层记忆初始化 -->
+            <!-- Dual-Layer Memory Initialization -->
             <div class="memory-section">
                 <div class="memory-box memory-long">
-                    <h4>📚 长期记忆初始化 (Eq. 15)</h4>
-                    <div class="memory-item">🗺️ 全局布局 (Global Layout)</div>
-                    <div class="memory-item">📜 任务历史 (Task History)</div>
-                    <div class="memory-item">🔗 稳定空间关系 (Stable Relations)</div>
-                    <div class="memory-item">⚠️ 约束规则 (Constraint Rules)</div>
+                    <h4>📚 Long-Term Memory Init (Eq. 15)</h4>
+                    <div class="memory-item">🗺️ Global Layout</div>
+                    <div class="memory-item">📜 Task History</div>
+                    <div class="memory-item">🔗 Stable Spatial Relations</div>
+                    <div class="memory-item">⚠️ Constraint Rules</div>
                 </div>
                 
                 <div class="memory-box memory-short">
-                    <h4>⚡ 短期记忆初始化 (Eq. 16)</h4>
-                    <div class="memory-item">📍 当前状态 (Current State)</div>
-                    <div class="memory-item">🔄 动态关系 (Dynamic Relations)</div>
-                    <div class="memory-item">✅ 已执行动作 (Executed Actions)</div>
-                    <div class="memory-item">🎯 活跃约束 (Active Constraints)</div>
+                    <h4>⚡ Short-Term Memory Init (Eq. 16)</h4>
+                    <div class="memory-item">📍 Current State</div>
+                    <div class="memory-item">🔄 Dynamic Relations</div>
+                    <div class="memory-item">✅ Executed Actions</div>
+                    <div class="memory-item">🎯 Active Constraints</div>
                 </div>
             </div>
         </div>
 
-        <!-- Phase 3: 循环规划执行 -->
+        <!-- Phase 3: Planning Loop Execution -->
         <div class="phase phase-3">
             <div class="phase-header">
                 <div class="phase-number">3</div>
                 <div>
-                    <div class="phase-title">循环规划执行 (KG-enhanced Planning RNN)</div>
-                    <div class="phase-subtitle">每个时间步 t 的处理流程</div>
+                    <div class="phase-title">Planning Loop Execution (KG-enhanced Planning RNN)</div>
+                    <div class="phase-subtitle">Processing pipeline for each time step t</div>
                 </div>
             </div>
             
@@ -489,12 +489,12 @@
                 <div class="loop-flow">
                     <div class="step-card code">
                         <div class="step-icon">💻</div>
-                        <div class="step-title">记忆融合</div>
-                        <div class="step-desc">合并长短期记忆</div>
+                        <div class="step-title">Memory Fusion</div>
+                        <div class="step-desc">Merge long and short-term memory</div>
                         <div class="step-eq">Eq. 17</div>
                         <div class="tooltip">
-                            <strong>公式:</strong> M_t = Fusion(M^L, M^S_t)<br>
-                            <strong>作用:</strong> 构建当前步骤的完整上下文
+                            <strong>Formula:</strong> M_t = Fusion(M^L, M^S_t)<br>
+                            <strong>Purpose:</strong> Build complete context for current step
                         </div>
                     </div>
                     
@@ -502,15 +502,15 @@
                     
                     <div class="step-card code">
                         <div class="step-icon">💻</div>
-                        <div class="step-title">Prompt构造</div>
-                        <div class="step-desc">组装LLM输入</div>
+                        <div class="step-title">Prompt Construction</div>
+                        <div class="step-desc">Assemble LLM input</div>
                         <div class="step-eq">Template</div>
                         <div class="tooltip">
-                            <strong>包含:</strong><br>
-                            • 任务指令<br>
-                            • 子图 G_task<br>
-                            • 约束 C_spatial<br>
-                            • 融合记忆 M_t
+                            <strong>Contains:</strong><br>
+                            • Task instruction<br>
+                            • Subgraph G_task<br>
+                            • Constraints C_spatial<br>
+                            • Fused memory M_t
                         </div>
                     </div>
                     
@@ -518,13 +518,13 @@
                     
                     <div class="step-card llm">
                         <div class="step-icon">🧠</div>
-                        <div class="step-title">动作生成</div>
-                        <div class="step-desc">LLM生成候选动作</div>
+                        <div class="step-title">Action Generation</div>
+                        <div class="step-desc">LLM generates candidate action</div>
                         <div class="step-eq">Eq. 11</div>
                         <div class="tooltip">
-                            <strong>输入:</strong> 构造好的Prompt<br>
-                            <strong>输出:</strong> 候选动作 a_t<br>
-                            <strong>例如:</strong> Pick(red_cup)
+                            <strong>Input:</strong> Constructed prompt<br>
+                            <strong>Output:</strong> Candidate action a_t<br>
+                            <strong>Example:</strong> Pick(red_cup)
                         </div>
                     </div>
                     
@@ -532,12 +532,12 @@
                     
                     <div class="step-card neo4j">
                         <div class="step-icon">🔷</div>
-                        <div class="step-title">约束查询</div>
-                        <div class="step-desc">查询动作相关约束</div>
+                        <div class="step-title">Constraint Query</div>
+                        <div class="step-desc">Query action-related constraints</div>
                         <div class="step-eq">Eq. 24</div>
                         <div class="tooltip">
-                            <strong>查询:</strong> 当前动作涉及的空间约束<br>
-                            <strong>例如:</strong> red_cup是否被遮挡？
+                            <strong>Query:</strong> Spatial constraints for current action<br>
+                            <strong>Example:</strong> Is red_cup available?
                         </div>
                     </div>
                     
@@ -545,55 +545,55 @@
                     
                     <div class="step-card code">
                         <div class="step-icon">💻</div>
-                        <div class="step-title">约束验证</div>
-                        <div class="step-desc">Spatial-KG-CoT验证</div>
+                        <div class="step-title">Constraint Verification</div>
+                        <div class="step-desc">Spatial-KG-CoT verification</div>
                         <div class="step-eq">Eq. 25-26</div>
                         <div class="tooltip">
-                            <strong>检查:</strong> 动作是否满足所有空间约束<br>
-                            <strong>输出:</strong> (is_valid, violation_reason)
+                            <strong>Check:</strong> Whether action satisfies all spatial constraints<br>
+                            <strong>Output:</strong> (is_valid, violation_reason)
                         </div>
                     </div>
                 </div>
                 
-                <!-- 决策点 -->
+                <!-- Decision Point -->
                 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; gap: 20px; flex-wrap: wrap;">
                     <div class="decision-diamond">
-                        <div class="decision-content">约束<br>满足?</div>
+                        <div class="decision-content">Constraint<br>Satisfied?</div>
                     </div>
                     
                     <div style="display: flex; flex-direction: column; gap: 15px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="color: #38ef7d; font-weight: bold;">✓ 是</span>
+                            <span style="color: #38ef7d; font-weight: bold;">✓ Yes</span>
                             <span class="arrow">→</span>
                             <div class="step-card code" style="width: 150px;">
                                 <div class="step-icon">💻</div>
-                                <div class="step-title">更新短期记忆</div>
+                                <div class="step-title">Update Short-Term Memory</div>
                                 <div class="step-eq">Eq. 16</div>
                             </div>
                         </div>
                         
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="color: #f5576c; font-weight: bold;">✗ 否</span>
+                            <span style="color: #f5576c; font-weight: bold;">✗ No</span>
                             <span class="arrow">→</span>
                             <div class="step-card llm" style="width: 150px;">
                                 <div class="step-icon">🧠</div>
-                                <div class="step-title">重新规划</div>
-                                <div class="step-desc">生成前置动作</div>
+                                <div class="step-title">Re-planning</div>
+                                <div class="step-desc">Generate prerequisite actions</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- 执行和更新 -->
+                <!-- Execution and Update -->
                 <div class="loop-flow">
                     <div class="step-card robot">
                         <div class="step-icon">🔧</div>
-                        <div class="step-title">机器人执行</div>
-                        <div class="step-desc">执行物理动作</div>
+                        <div class="step-title">Robot Execution</div>
+                        <div class="step-desc">Execute physical action</div>
                         <div class="step-eq">Robot API</div>
                         <div class="tooltip">
-                            <strong>动作:</strong> Pick(), Place(), Open(), Close()<br>
-                            <strong>执行:</strong> 通过机器人控制接口
+                            <strong>Actions:</strong> Pick(), Place(), Move()<br>
+                            <strong>Execution:</strong> Via robot control interface
                         </div>
                     </div>
                     
@@ -601,12 +601,12 @@
                     
                     <div class="step-card llm">
                         <div class="step-icon">🧠</div>
-                        <div class="step-title">场景重观测</div>
-                        <div class="step-desc">VLM分析新场景</div>
+                        <div class="step-title">Scene Re-observation</div>
+                        <div class="step-desc">VLM analyzes new scene</div>
                         <div class="step-eq">GPT-4V</div>
                         <div class="tooltip">
-                            <strong>操作:</strong> 拍摄新图像<br>
-                            <strong>分析:</strong> 提取更新后的空间关系
+                            <strong>Operation:</strong> Capture new image<br>
+                            <strong>Analysis:</strong> Extract updated spatial relations
                         </div>
                     </div>
                     
@@ -614,12 +614,12 @@
                     
                     <div class="step-card neo4j">
                         <div class="step-icon">🔷</div>
-                        <div class="step-title">知识图谱更新</div>
-                        <div class="step-desc">增量更新KG</div>
+                        <div class="step-title">Knowledge Graph Update</div>
+                        <div class="step-desc">Incremental KG update</div>
                         <div class="step-eq">Alg. 2</div>
                         <div class="tooltip">
-                            <strong>操作:</strong> 更新节点和边<br>
-                            <strong>处理:</strong> 冲突检测与解决
+                            <strong>Operation:</strong> Update nodes and edges<br>
+                            <strong>Process:</strong> Conflict detection and resolution
                         </div>
                     </div>
                     
@@ -627,64 +627,63 @@
                     
                     <div class="step-card code">
                         <div class="step-icon">💻</div>
-                        <div class="step-title">完成检查</div>
-                        <div class="step-desc">检查任务是否完成</div>
+                        <div class="step-title">Completion Check</div>
+                        <div class="step-desc">Check if task is complete</div>
                         <div class="step-eq">Logic</div>
                         <div class="tooltip">
-                            <strong>检查:</strong> 目标状态是否达成<br>
-                            <strong>输出:</strong> 完成→退出循环，未完成→继续
+                            <strong>Check:</strong> Whether goal state is achieved<br>
+                            <strong>Output:</strong> Complete → Exit loop, Incomplete → Continue
                         </div>
                     </div>
                 </div>
                 
                 <div style="text-align: center; margin-top: 15px; color: #f093fb;">
-                    ↩️ 未完成则返回循环开始，进入下一时间步 t+1
+                    ↩️ If not complete, return to loop start for next time step t+1
                 </div>
             </div>
             
-            <!-- 最终输出 -->
+            <!-- Final Output -->
             <div class="final-output">
-                <h3>✅ 任务完成 - 输出</h3>
-                <p>生成完整的可执行动作序列</p>
+                <h3>✅ Task Complete - Output</h3>
+                <p>Generated executable action sequence</p>
                 <div class="action-sequence">
-                    <div class="action-item">1. Open(container)</div>
-                    <div class="action-item">2. Pick(red_cup)</div>
-                    <div class="action-item">3. Place(red_cup, container)</div>
-                    <div class="action-item">4. Close(container)</div>
+                    <div class="action-item">1. Pick()</div>
+                    <div class="action-item">2. Place()</div>
+                    <div class="action-item">3. Move()</div>
                 </div>
             </div>
         </div>
         
-        <!-- 总结 -->
+        <!-- Summary -->
         <div style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 25px; margin-top: 20px;">
-            <h3 style="text-align: center; margin-bottom: 20px;">📊 执行者分工总结</h3>
+            <h3 style="text-align: center; margin-bottom: 20px;">📊 Executor Role Summary</h3>
             <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
                 <div style="text-align: center;">
                     <div class="legend-icon legend-llm" style="width: 50px; height: 50px; font-size: 24px; margin: 0 auto 10px;">🧠</div>
                     <div style="font-weight: bold; color: #764ba2;">LLM/VLM</div>
-                    <div style="font-size: 0.85em; color: #8892b0;">语义理解<br>动作生成<br>重规划</div>
+                    <div style="font-size: 0.85em; color: #8892b0;">Semantic Understanding<br>Action Generation<br>Re-planning</div>
                 </div>
                 <div style="text-align: center;">
                     <div class="legend-icon legend-code" style="width: 50px; height: 50px; font-size: 24px; margin: 0 auto 10px;">💻</div>
-                    <div style="font-weight: bold; color: #38ef7d;">程序化计算</div>
-                    <div style="font-size: 0.85em; color: #8892b0;">公式计算<br>约束验证<br>记忆管理</div>
+                    <div style="font-weight: bold; color: #38ef7d;">Programmatic Computation</div>
+                    <div style="font-size: 0.85em; color: #8892b0;">Formula Calculation<br>Constraint Verification<br>Memory Management</div>
                 </div>
                 <div style="text-align: center;">
                     <div class="legend-icon legend-neo4j" style="width: 50px; height: 50px; font-size: 24px; margin: 0 auto 10px;">🔷</div>
                     <div style="font-weight: bold; color: #f5576c;">Neo4j</div>
-                    <div style="font-size: 0.85em; color: #8892b0;">图存储<br>子图查询<br>关系更新</div>
+                    <div style="font-size: 0.85em; color: #8892b0;">Graph Storage<br>Subgraph Query<br>Relation Update</div>
                 </div>
                 <div style="text-align: center;">
                     <div class="legend-icon legend-robot" style="width: 50px; height: 50px; font-size: 24px; margin: 0 auto 10px;">🔧</div>
-                    <div style="font-weight: bold; color: #fee140;">机器人</div>
-                    <div style="font-size: 0.85em; color: #8892b0;">物理执行<br>环境交互</div>
+                    <div style="font-weight: bold; color: #fee140;">Robot</div>
+                    <div style="font-size: 0.85em; color: #8892b0;">Physical Execution<br>Environment Interaction</div>
                 </div>
             </div>
         </div>
     </div>
     
     <script>
-        // 添加卡片点击效果
+        // Add card click effect
         document.querySelectorAll('.step-card').forEach(card => {
             card.addEventListener('click', function() {
                 this.style.transform = 'scale(0.95)';
