@@ -2,10 +2,6 @@
 ### Leveraging VLMs and Knowledge Graphs for Complex Long-Horizon Embodied Tasks
 
 ---
-[new_framework-eps-converted-to.pdf](https://github.com/user-attachments/files/24027589/new_framework-eps-converted-to.pdf)
-
----
----
 ## 📌 Project Introduction
 This project explores the integration of **VLM (Vision-Language Model) + Knowledge Graph** in **complex long-horizon tasks**.
 By constructing a callable scene knowledge structure, the agent gains stronger interpretability and robustness in environmental perception, semantic understanding, task decomposition, and planning and execution.
